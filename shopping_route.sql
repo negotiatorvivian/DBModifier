@@ -9,6 +9,22 @@ create table shopping_users (
     years varchar(10) default '0' comment '在当前城市呆的时间',
     marital_status int default 0 comment '婚姻状态,0:未婚, 1:已婚',
     create_time int default 0 comment '创建时间',
-    update_time int default 0 comment '创建时间',
+    update_time int default 0 comment '更新时间',
+    status int default 1 comment '状态,1:合法, 0:非法'
+) engine = innodb default charset = utf8mb4 collate = utf8mb4_unicode_ci;
+
+
+create table shopping_goods (
+    id int auto_increment primary key comment '自增主键',
+    trade_name varchar(20) default '' comment '商品名称',
+    description varchar(256) default '' comment '商品描述',
+    category int default 1 comment '所属类别',
+    price int default 0 comment '商品价格',
+    latitude float default 0.0 comment '所在位置经度',
+    longitude float default 0.0 comment '所在位置纬度',
+    features varchar(100) default '' comment '特征词',
+    score float default 0.0 comment '用户打分',
+    create_time int default 0 comment '创建时间',
+    update_time int default 0 comment '更新时间',
     status int default 1 comment '状态,1:合法, 0:非法'
 ) engine = innodb default charset = utf8mb4 collate = utf8mb4_unicode_ci;
