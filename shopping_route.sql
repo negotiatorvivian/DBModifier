@@ -16,7 +16,7 @@ create table shopping_users (
 
 create table shopping_goods (
     id int auto_increment primary key comment '自增主键',
-    trade_name varchar(20) default '' comment '商品名称',
+    trade_name varchar(100) default '' comment '商品名称',
     description varchar(256) default '' comment '商品描述',
     category int default 1 comment '所属类别',
     price int default 0 comment '商品价格',
@@ -28,3 +28,16 @@ create table shopping_goods (
     update_time int default 0 comment '更新时间',
     status int default 1 comment '状态,1:合法, 0:非法'
 ) engine = innodb default charset = utf8mb4 collate = utf8mb4_unicode_ci;
+
+
+create table categories (
+    id int auto_increment primary key comment '自增主键',
+    cat_id int default 0 comment '目录id',
+    cat_name varchar(50) default '' comment '类别名称',
+    create_time int default 0 comment '创建时间',
+    update_time int default 0 comment '更新时间',
+    status int default 1 comment '状态,1:合法, 0:非法'
+) engine = innodb default charset = utf8mb4 collate = utf8mb4_unicode_ci;
+
+alter table categories add column clicks int default 0 comment '用户偏好的类别计数' after cat_name;
+
